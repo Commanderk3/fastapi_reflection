@@ -145,6 +145,12 @@ def decide_to_terminate(response):
     return decision
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
     import uvicorn
-    port = int(os.environ.get("PORT", 8000))  # Default to 8000 for local development
-    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=port,
+        workers=1,  # Crucial for Render
+        timeout_keep_alive=60  # Prevents early disconnects
+    )
