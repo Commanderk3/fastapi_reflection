@@ -3,7 +3,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
 
-embeddings = HuggingFaceEmbeddings(model_name=config.EMBEDDING_MODEL)
+embeddings = HuggingFaceEmbeddings(model_name="./models/all-MiniLM-L6-v2")
 
 qdrant = QdrantClient(
     url=config.QDRANT_URL,
@@ -30,4 +30,4 @@ def getContext(query):
     else:
         return None
 
-print(getContext("hi"))
+# print(getContext("hi"))

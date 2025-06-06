@@ -21,11 +21,6 @@ app.add_middleware(
 
 # Models and embeddings
 model = SentenceTransformer(config.EMBEDDING_MODEL)
-embeddings = HuggingFaceEmbeddings(
-    model_name=config.EMBEDDING_MODEL,
-    model_kwargs={'device': 'cpu'},  # Important for Render
-    encode_kwargs={'normalize_embeddings': True}
-)
 
 llm = ChatGoogleGenerativeAI(
     model="models/gemini-2.0-flash",
